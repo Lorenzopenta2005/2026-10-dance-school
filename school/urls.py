@@ -48,4 +48,14 @@ urlpatterns = [
         views.DayOfTheWeekDetailView.as_view(),
         name="dayoftheweek_detail",
     ),
+    path(
+        "giorni/nuovo/",
+        views.DayOfTheWeekCreateView.as_view(),
+        name="dayoftheweek_create",
+    ),
+    path(
+        "giorni/<int:pk>/modifica/",
+        views.DayOfTheWeekUpdateView.as_view(),
+        name="dayoftheweek_update",
+    ),
 ]

@@ -12,6 +12,20 @@ class DayOfTheWeekDetailView(generic.DetailView):
     model = DayOfTheWeek
 
 
+class DayOfTheWeekCreateView(generic.CreateView):
+    model = DayOfTheWeek
+    fields = ["name", "number"]
+    success_url = reverse_lazy("dayoftheweek_list")
+
+
+class DayOfTheWeekUpdateView(generic.UpdateView):
+    model = DayOfTheWeek
+    fields = ["name", "number"]
+
+    def get_success_url(self):
+        return reverse_lazy("dayoftheweek_detail", kwargs={"pk": self.object.pk})
+
+
 class ClassroomListView(generic.ListView):
     model = Classroom
 
