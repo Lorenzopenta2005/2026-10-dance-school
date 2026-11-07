@@ -32,6 +32,116 @@
                    href="{% url 'admin:login' %}"
                    title="Vai al Pannello di Amministrazione">Admin</a>
             </div>
+            <div class="navbar-nav ms-lg-auto gap-lg-2">
+                <a class="nav-link"
+                   href="#accedi"
+                   role="button"
+                   data-bs-toggle="modal"
+                   title="Apri modal Accedi">Accedi</a>
+                <a class="btn btn-primary"
+                   href="#registrati"
+                   role="button"
+                   data-bs-toggle="modal"
+                   title="Apri modal Registrati">Registrati</a>
+            </div>
         </div>
     </div>
 </nav>
+<div class="modal fade"
+     id="registrati"
+     tabindex="-1"
+     aria-labelledby="registrati-titolo"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="registrati-titolo">Registrati</h2>
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Chiudi"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="registrati-nome" class="form-label">Nome</label>
+                        <input type="text"
+                               class="form-control"
+                               name="nome"
+                               id="registrati-nome"
+                               required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registrati-cognome" class="form-label">Cognome</label>
+                        <input type="text"
+                               class="form-control"
+                               name="cognome"
+                               id="registrati-cognome"
+                               required>
+                    </div>
+                    <div>
+                        <label for="registrati-email" class="form-label">Email</label>
+                        <input type="email"
+                               class="form-control"
+                               name="email"
+                               id="registrati-email"
+                               required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-outline-secondary"
+                            data-bs-dismiss="modal">Annulla</button>
+                    <button type="submit" class="btn btn-primary">Registrati</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade"
+     id="accedi"
+     tabindex="-1"
+     aria-labelledby="accedi-titolo"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form method="post" action="{% url 'admin:login' %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="accedi-titolo">Accedi</h2>
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Chiudi"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="accedi-username" class="form-label">Username</label>
+                        <input type="text"
+                               class="form-control"
+                               name="username"
+                               id="accedi-username"
+                               autocomplete="username"
+                               required>
+                    </div>
+                    <div>
+                        <label for="accedi-password" class="form-label">Password</label>
+                        <input type="password"
+                               class="form-control"
+                               name="password"
+                               id="accedi-password"
+                               autocomplete="current-password"
+                               required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-outline-secondary"
+                            data-bs-dismiss="modal">Annulla</button>
+                    <button type="submit" class="btn btn-primary">Accedi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
