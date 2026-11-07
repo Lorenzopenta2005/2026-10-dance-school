@@ -1,5 +1,9 @@
 from django.db import models
 
+__all__ = [
+    "School",
+]
+
 
 class School(models.Model):
     name = models.CharField(max_length=100)

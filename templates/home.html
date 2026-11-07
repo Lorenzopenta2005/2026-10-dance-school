@@ -1,16 +1,88 @@
 {% extends "base.html" %}
 {% block title %}Homepage{% endblock %}
 {% block content %}
-    <h1>Benvenuti alla Dance School</h1>
-    <p>Dal 2005 insegniamo a ballare a chiunque abbia voglia di muoversi a tempo di musica.</p>
-    <p>
-        I nostri insegnanti seguono ogni allievo con lezioni a piccoli gruppi, dal primo passo fino
-        al saggio di fine anno. Scegli il corso, il giorno e la sede che preferisci.
-    </p>
-    {% if user.is_authenticated %}
-        <p>Ciao {{ user.username }}</p>
-    {% endif %}
-    {% if user.is_anonymous %}
-        <p>Ciao utente sconosciuto</p>
-    {% endif %}
+    <div id="carousel-home"
+         class="carousel slide rounded-4 overflow-hidden shadow-sm mb-5"
+         data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button"
+                    data-bs-target="#carousel-home"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Articolo 1"></button>
+            <button type="button"
+                    data-bs-target="#carousel-home"
+                    data-bs-slide-to="1"
+                    aria-label="Articolo 2"></button>
+            <button type="button"
+                    data-bs-target="#carousel-home"
+                    data-bs-slide-to="2"
+                    aria-label="Articolo 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <article class="carousel-item active">
+                <div class="carousel-articolo">
+                    <h2>Iscrizioni aperte</h2>
+                    <p>Danza classica, moderna e hip hop per bambini, ragazzi e adulti.</p>
+                    <a class="btn btn-light" href="{% url 'course_list' %}">Scopri i corsi</a>
+                </div>
+            </article>
+            <article class="carousel-item">
+                <div class="carousel-articolo">
+                    <h2>Lezione di prova gratuita</h2>
+                    <p>Vieni a provare un corso a scelta prima di iscriverti.</p>
+                    <a class="btn btn-light" href="{% url 'about' %}">Contattaci</a>
+                </div>
+            </article>
+            <article class="carousel-item">
+                <div class="carousel-articolo">
+                    <h2>Tre sedi vicino a te</h2>
+                    <p>Aule ampie e luminose, con parquet e specchi a parete.</p>
+                    <a class="btn btn-light" href="{% url 'lista_scuole' %}">Vedi le sedi</a>
+                </div>
+            </article>
+        </div>
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carousel-home"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Precedente</span>
+        </button>
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#carousel-home"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Successivo</span>
+        </button>
+    </div>
+    <section class="row g-4 align-items-center">
+        <div class="col-lg-7">
+            <h1>Benvenuti alla Dance School</h1>
+            <p class="lead">Dal 2005 insegniamo a ballare a chiunque abbia voglia di muoversi a tempo di musica.</p>
+            <p>
+                I nostri insegnanti seguono ogni allievo con lezioni a piccoli gruppi, dal primo passo fino
+                al saggio di fine anno. Scegli il corso, il giorno e la sede che preferisci.
+            </p>
+            {% if user.is_authenticated %}
+                <p class="text-body-secondary">Ciao {{ user.username }}</p>
+            {% endif %}
+            {% if user.is_anonymous %}
+                <p class="text-body-secondary">Ciao utente sconosciuto</p>
+            {% endif %}
+        </div>
+        <div class="col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="h5">Da dove vuoi iniziare?</h2>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-primary" href="{% url 'course_list' %}">Guarda i corsi</a>
+                        <a class="btn btn-outline-primary" href="{% url 'lista_scuole' %}">Trova una sede</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

@@ -1,4 +1,94 @@
+/* colori presi dal logo: lilla e prugna */
+:root {
+  --bs-body-font-family: "Poppins", sans-serif;
+  --dance-primary: #6b4c8a;
+  --dance-primary-dark: #563c70;
+  --dance-light: #efe9f5;
+  --dance-border: #e2d9ec;
+  --bs-heading-color: #2f2340;
+  --bs-link-color-rgb: 107, 76, 138;
+  --bs-link-hover-color-rgb: 86, 60, 112;
+  --bs-border-radius: 0.6rem;
+}
+
+html,
 body {
-  margin: 0;
-  font-family: sans-serif;
+  background: #f6f4f9;
+}
+
+.navbar {
+  --bs-navbar-hover-color: var(--dance-primary);
+}
+
+.navbar-brand img {
+  height: 3rem;
+  border-radius: 0.5rem;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--dance-primary);
+  --bs-btn-border-color: var(--dance-primary);
+  --bs-btn-hover-bg: var(--dance-primary-dark);
+  --bs-btn-hover-border-color: var(--dance-primary-dark);
+  --bs-btn-active-bg: var(--dance-primary-dark);
+  --bs-btn-active-border-color: var(--dance-primary-dark);
+  --bs-btn-focus-shadow-rgb: 107, 76, 138;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--dance-primary);
+  --bs-btn-border-color: var(--dance-primary);
+  --bs-btn-hover-bg: var(--dance-primary);
+  --bs-btn-hover-border-color: var(--dance-primary);
+  --bs-btn-active-bg: var(--dance-primary-dark);
+  --bs-btn-active-border-color: var(--dance-primary-dark);
+  --bs-btn-focus-shadow-rgb: 107, 76, 138;
+}
+
+.table {
+  --bs-table-striped-bg: #faf8fc;
+  --bs-table-hover-bg: #f3eef8;
+}
+
+.table > thead {
+  --bs-table-bg: var(--dance-light);
+}
+
+.card {
+  --bs-card-border-color: var(--dance-border);
+  --bs-card-cap-bg: var(--dance-light);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #b9a6d0;
+  box-shadow: 0 0 0 0.25rem rgba(107, 76, 138, 0.2);
+}
+
+.alert-info {
+  --bs-alert-color: #4a3560;
+  --bs-alert-bg: var(--dance-light);
+  --bs-alert-border-color: var(--dance-border);
+}
+
+/* slide del carousel della home: articoli su sfondo sfumato */
+.carousel-articolo {
+  --bs-heading-color: #fff;
+  min-height: 20rem;
+  padding: 3rem 4.5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, #563c70, #8a6aab);
+}
+
+.carousel-item:nth-child(2) .carousel-articolo {
+  background: linear-gradient(135deg, #6b4c8a, #b48fc9);
+}
+
+.carousel-item:nth-child(3) .carousel-articolo {
+  background: linear-gradient(135deg, #3f2c55, #6b4c8a);
 }

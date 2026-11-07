@@ -2,6 +2,12 @@ from django.db import models
 
 from schoolmanagement.models import School
 
+__all__ = [
+    "Classroom",
+    "Course",
+    "DayOfTheWeek",
+]
+
 
 class DayOfTheWeek(models.Model):
     number = models.IntegerField()

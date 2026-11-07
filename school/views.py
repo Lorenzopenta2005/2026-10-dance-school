@@ -3,6 +3,20 @@ from django.views import generic
 
 from school.models import Classroom, Course, DayOfTheWeek
 
+__all__ = [
+    "ClassroomDetailView",
+    "ClassroomListView",
+    "CourseCreateView",
+    "CourseDeleteView",
+    "CourseDetailView",
+    "CourseListView",
+    "CourseUpdateView",
+    "DayOfTheWeekCreateView",
+    "DayOfTheWeekDetailView",
+    "DayOfTheWeekListView",
+    "DayOfTheWeekUpdateView",
+]
+
 
 class DayOfTheWeekListView(generic.ListView):
     model = DayOfTheWeek
