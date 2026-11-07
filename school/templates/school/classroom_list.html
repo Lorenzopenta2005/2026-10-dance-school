@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Lista classi{% endblock %}
+{% block content %}
+    <h1>Lista delle classi</h1>
+    {% if object_list %}
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+            </tr>
+            {% for el in object_list %}
+                <tr>
+                    <td>{{ el.id }}</td>
+                    <td><a href="{% url 'classroom_detail' el.id %}">{{ el.name }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Nessuna classe trovata.</p>
+    {% endif %}
+{% endblock %}

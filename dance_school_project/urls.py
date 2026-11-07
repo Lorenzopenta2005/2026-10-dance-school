@@ -8,4 +8,5 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("admin/", admin.site.urls),
     path("school/", include("schoolmanagement.urls")),
+    path("school-conf/", include("school.urls")),
 ]

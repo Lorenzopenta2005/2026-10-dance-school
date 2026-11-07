@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Lista giorni{% endblock %}
+{% block content %}
+    <h1>Lista dei giorni della settimana</h1>
+    {% if object_list %}
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Numero</th>
+            </tr>
+            {% for el in object_list %}
+                <tr>
+                    <td>{{ el.id }}</td>
+                    <td><a href="{% url 'dayoftheweek_detail' el.id %}">{{ el.name }}</a></td>
+                    <td>{{ el.number }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Nessun giorno trovato.</p>
+    {% endif %}
+{% endblock %}
