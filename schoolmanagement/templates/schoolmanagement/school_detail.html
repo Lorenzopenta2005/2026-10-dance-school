@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Dettaglio {{ object }}{% endblock %}
+{% block content %}
+    <h1>Dettaglio di {{ object }}</h1>
+    <p>Id: {{ object.id }}</p>
+    <p>Nome: {{ object.name }}</p>
+    <p>Indirizzo: {{ object.full_address }}</p>
+    <p>Paese: {{ object.country }}</p>
+    <p>Sito web: {% if object.website %}<a href="{{ object.website }}">{{ object.website }}</a>{% else %}-{% endif %}</p>
+    <p>Telefono: {{ object.phone|default:"-" }}</p>
+    <p>Email: {{ object.email|default:"-" }}</p>
+    <p>Partita IVA: {{ object.vat|default:"-" }}</p>
+    <a href="{% url 'lista_scuole' %}">Torna alla lista</a>
+{% endblock %}

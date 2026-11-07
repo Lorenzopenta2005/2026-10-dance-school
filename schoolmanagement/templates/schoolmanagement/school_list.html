@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Lista scuole{% endblock %}
+{% block content %}
+    <h1>Lista delle scuole</h1>
+    {% if object_list %}
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Via</th>
+            </tr>
+            {% for el in object_list %}
+                <tr>
+                    <td><a href="{% url 'dettaglio_scuola' el.id %}">{{ el.name }}</a></td>
+                    <td>{{ el.street }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Nessuna scuola trovata.</p>
+    {% endif %}
+{% endblock %}
