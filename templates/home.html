@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Homepage{% endblock %}
+{% block content %}
+    <h1>Benvenuti alla Dance School</h1>
+    <p>Dal 2005 insegniamo a ballare a chiunque abbia voglia di muoversi a tempo di musica.</p>
+    <p>
+        I nostri insegnanti seguono ogni allievo con lezioni a piccoli gruppi, dal primo passo fino
+        al saggio di fine anno. Scegli il corso, il giorno e la sede che preferisci.
+    </p>
+    {% if user.is_authenticated %}
+        <p>Ciao {{ user.username }}</p>
+    {% endif %}
+    {% if user.is_anonymous %}
+        <p>Ciao utente sconosciuto</p>
+    {% endif %}
+{% endblock %}
