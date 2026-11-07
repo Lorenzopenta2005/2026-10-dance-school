@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Lista corsi{% endblock %}
+{% block content %}
+    <h1>Lista dei corsi</h1>
+    {% if object_list %}
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+            </tr>
+            {% for el in object_list %}
+                <tr>
+                    <td>{{ el.id }}</td>
+                    <td><a href="{% url 'course_detail' el.id %}">{{ el.subject }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Nessun corso trovato.</p>
+    {% endif %}
+{% endblock %}
