@@ -1,21 +1,22 @@
-{% extends "base.html" %}
-{% block title %}Lista corsi{% endblock %}
-{% block content %}
-    <h1>Lista dei corsi</h1>
-    {% if object_list %}
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-            </tr>
-            {% for el in object_list %}
-                <tr>
-                    <td>{{ el.id }}</td>
-                    <td><a href="{% url 'course_detail' el.id %}">{{ el.subject }}</a></td>
-                </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>Nessun corso trovato.</p>
-    {% endif %}
+{% extends "base_list.html" %}
+{% block custom-type %}corsi{% endblock %}
+{% block list-header %}<th>Id</th><th>Nome</th>{% endblock %}
+{% block list-body %}
+    {% for el in object_list %}
+        <tr>
+            <td>{{ el.id }}</td>
+            <td>{{ el.subject }}</td>
+            <td>
+                <a class="btn btn-sm btn-outline-primary"
+                   href="{% url 'course_detail' el.id %}">Mostra</a>
+                <a class="btn btn-sm btn-outline-secondary"
+                   href="{% url 'course_update' el.id %}">Modifica</a>
+                <a class="btn btn-sm btn-outline-danger"
+                   href="{% url 'course_delete' el.id %}">Elimina</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+{% block add-new %}
+    <p><a class="btn btn-primary" href="{% url 'course_create' %}">Aggiungi nuovo</a></p>
 {% endblock %}

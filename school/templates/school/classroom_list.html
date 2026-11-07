@@ -1,21 +1,15 @@
-{% extends "base.html" %}
-{% block title %}Lista classi{% endblock %}
-{% block content %}
-    <h1>Lista delle classi</h1>
-    {% if object_list %}
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-            </tr>
-            {% for el in object_list %}
-                <tr>
-                    <td>{{ el.id }}</td>
-                    <td><a href="{% url 'classroom_detail' el.id %}">{{ el.name }}</a></td>
-                </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>Nessuna classe trovata.</p>
-    {% endif %}
+{% extends "base_list.html" %}
+{% block custom-type %}classi{% endblock %}
+{% block list-header %}<th>Id</th><th>Nome</th>{% endblock %}
+{% block list-body %}
+    {% for el in object_list %}
+        <tr>
+            <td>{{ el.id }}</td>
+            <td>{{ el.name }}</td>
+            <td>
+                <a class="btn btn-sm btn-outline-primary"
+                   href="{% url 'classroom_detail' el.id %}">Mostra</a>
+            </td>
+        </tr>
+    {% endfor %}
 {% endblock %}

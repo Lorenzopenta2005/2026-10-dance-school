@@ -4,6 +4,6 @@
     <form action="" method="post">
         {% csrf_token %}
         <p>Conferma la cancellazione del corso: {{ object.subject }}</p>
-        <button type="submit">Conferma</button>
+        <button type="submit" class="btn btn-danger">Conferma</button>
     </form>
 {% endblock %}

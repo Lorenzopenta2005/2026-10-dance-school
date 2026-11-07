@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Dettaglio di {{ object }}{% endblock %}
+{% block content %}
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h1 class="mb-0">Dettaglio di {{ object }}</h1>
+        </div>
+        <div class="card-body">
+            {% block detail-content %}
+                <p>Id: {{ object.id }}</p>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

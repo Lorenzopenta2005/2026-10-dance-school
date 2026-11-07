@@ -1,21 +1,17 @@
-{% extends "base.html" %}
-{% block title %}Lista scuole{% endblock %}
-{% block content %}
-    <h1>Lista delle scuole</h1>
-    {% if object_list %}
-        <table>
-            <tr>
-                <th>Nome</th>
-                <th>Via</th>
-            </tr>
-            {% for el in object_list %}
-                <tr>
-                    <td><a href="{% url 'dettaglio_scuola' el.id %}">{{ el.name }}</a></td>
-                    <td>{{ el.street }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>Nessuna scuola trovata.</p>
-    {% endif %}
+{% extends "base_list.html" %}
+{% block custom-type %}scuole{% endblock %}
+{% block list-header %}<th>Nome</th><th>Via</th><th>Telefono</th><th>Email</th>{% endblock %}
+{% block list-body %}
+    {% for el in object_list %}
+        <tr>
+            <td>{{ el.name }}</td>
+            <td>{{ el.street }}</td>
+            <td>{{ el.phone|default:"-" }}</td>
+            <td>{{ el.email|default:"-" }}</td>
+            <td>
+                <a class="btn btn-sm btn-outline-primary"
+                   href="{% url 'dettaglio_scuola' el.id %}">Mostra</a>
+            </td>
+        </tr>
+    {% endfor %}
 {% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Lista di oggetti{% endblock %}
+{% block content %}
+    {% if object_list %}
+        <h1>Lista di {% block custom-type %}oggetti{% endblock %}:</h1>
+        <div class="card shadow-sm table-responsive mb-3">
+            <table class="table table-striped table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        {% block list-header %}<th>Id</th><th>Elemento</th>{% endblock %}
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% block list-body %}
+                        {% for el in object_list %}
+                            <tr>
+                                <td>{{ el.id }}</td>
+                                <td>{{ el }}</td>
+                                <td></td>
+                            </tr>
+                        {% endfor %}
+                    {% endblock %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info">Nessun oggetto trovato!</div>
+    {% endif %}
+    {% block add-new %}{% endblock %}
+{% endblock %}

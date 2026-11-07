@@ -1,23 +1,21 @@
-{% extends "base.html" %}
-{% block title %}Lista giorni{% endblock %}
-{% block content %}
-    <h1>Lista dei giorni della settimana</h1>
-    {% if object_list %}
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Numero</th>
-            </tr>
-            {% for el in object_list %}
-                <tr>
-                    <td>{{ el.id }}</td>
-                    <td><a href="{% url 'dayoftheweek_detail' el.id %}">{{ el.name }}</a></td>
-                    <td>{{ el.number }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>Nessun giorno trovato.</p>
-    {% endif %}
+{% extends "base_list.html" %}
+{% block custom-type %}giorni della settimana{% endblock %}
+{% block list-header %}<th>Id</th><th>Nome</th><th>Numero</th>{% endblock %}
+{% block list-body %}
+    {% for el in object_list %}
+        <tr>
+            <td>{{ el.id }}</td>
+            <td>{{ el.name }}</td>
+            <td>{{ el.number }}</td>
+            <td>
+                <a class="btn btn-sm btn-outline-primary"
+                   href="{% url 'dayoftheweek_detail' el.id %}">Mostra</a>
+                <a class="btn btn-sm btn-outline-secondary"
+                   href="{% url 'dayoftheweek_update' el.id %}">Modifica</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+{% block add-new %}
+    <p><a class="btn btn-primary" href="{% url 'dayoftheweek_create' %}">Aggiungi nuovo</a></p>
 {% endblock %}

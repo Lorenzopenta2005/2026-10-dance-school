@@ -1,14 +1,13 @@
-{% extends "base.html" %}
-{% block title %}Dettaglio {{ object }}{% endblock %}
-{% block content %}
-    <h1>Dettaglio di {{ object }}</h1>
+{% extends "base_detail.html" %}
+{% block detail-content %}
     <p>Id: {{ object.id }}</p>
     <p>Nome: {{ object.name }}</p>
+    <hr>
     {% if object.courses.count %}
         <h2>Lista dei corsi in questa aula</h2>
         <ul>
             {% for course in object.courses.all %}
-                <li>{{ course }}</li>
+                <li><a href="{% url 'course_detail' course.pk %}">{{ course }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
