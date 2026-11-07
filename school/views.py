@@ -40,3 +40,8 @@ class CourseUpdateView(generic.UpdateView):
 
     def get_success_url(self):
         return reverse_lazy("course_detail", kwargs={"pk": self.object.pk})
+
+
+class CourseDeleteView(generic.DeleteView):
+    model = Course
+    success_url = reverse_lazy("course_list")

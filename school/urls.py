@@ -14,6 +14,11 @@ urlpatterns = [
         name="course_detail",
     ),
     path(
+        "corsi/<int:pk>/elimina/",
+        views.CourseDeleteView.as_view(),
+        name="course_delete",
+    ),
+    path(
         "corsi/nuovo/",
         views.CourseCreateView.as_view(),
         name="course_create",
